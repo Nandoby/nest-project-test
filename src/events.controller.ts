@@ -8,6 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { CreateEventDto } from './create.event.dto';
 
 @Controller('/events')
 export class EventsController {
@@ -23,7 +24,9 @@ export class EventsController {
     return { id: 1, name: 'First event' };
   }
   @Post()
-  create() {}
+  create(@Body() input: CreateEventDto) {
+    return input;
+  }
   @Patch(':id')
   update(@Param('id') id, @Body() input) {
     return input;
